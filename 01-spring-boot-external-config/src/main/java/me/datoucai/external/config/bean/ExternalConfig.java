@@ -1,6 +1,5 @@
 package me.datoucai.external.config.bean;
 
-import org.springframework.boot.env.RandomValuePropertySource;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -9,8 +8,5 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class ExternalConfig {
-    {
-        RandomValuePropertySource my = new RandomValuePropertySource("my");
-        System.out.println(my.getProperty("random.int"));
-    }
+
 }
