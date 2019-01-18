@@ -1,2 +1,2 @@
 # spring-boot-learning
-learning springboot step by step
+learn springboot step by step
