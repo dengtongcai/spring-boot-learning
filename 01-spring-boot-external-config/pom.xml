@@ -13,6 +13,15 @@
     <name>01-spring-boot-external-config</name>
     <description>Demo project for Spring Boot</description>
 
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional><!--optional代表子项目是否依赖-->
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>

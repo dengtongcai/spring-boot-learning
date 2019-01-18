@@ -1,7 +1,10 @@
 package me.datoucai.external.config.api;
 
+import me.datoucai.external.config.bean.ExternalConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.env.RandomValuePropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,6 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class ExternalConfigController {
+
+    @Autowired
+    private ExternalConfig ec;
+
+    @Autowired
+    private Environment evn;
 
     @Value("${app.name}")
     private String appName;
@@ -34,7 +43,9 @@ public class ExternalConfigController {
 //        return "hello random is：" + propertySource.getProperty("random.int[1024,65536]");
 //        return desc;
 //        return uuid;
-        return uuid2;
+//        return evn.getProperty("app.desc");
+//        return uuid2;
+            return ec.toString();
     }
 
 
