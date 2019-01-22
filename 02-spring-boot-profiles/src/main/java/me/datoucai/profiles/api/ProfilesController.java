@@ -19,9 +19,11 @@ public class ProfilesController {
     public String profiles() {
         String res = level;
 
+        log.debug("level is {}", level);
         log.info("level is {}", level);
         log.warn("level is {}", level);
         log.error("level is {}", level);
+        log.info("the log system is {}",log);
         return level;
     }
 }
