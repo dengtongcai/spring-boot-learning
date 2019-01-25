@@ -11,7 +11,7 @@ import org.springframework.http.converter.HttpMessageConverter;
 @Configuration
 public class SelfConverterConfiguration {
 
-    @Bean
+//    @Bean
     HttpMessageConverter newBase64Converter() {
         return new Base64HttpMessageConverter();
     }
