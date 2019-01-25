@@ -18,4 +18,10 @@ public class PageController {
     public String login() {
         return "login";
     }
+
+    @RequestMapping(value = "2error")
+    public String toError() {
+        System.out.println(1 / 0);
+        return "login";
+    }
 }

@@ -1,7 +1,9 @@
 package me.datoucai.web.advices;
 
 import com.alibaba.fastjson.JSONException;
+import me.datoucai.web.api.ExceptionController2;
 import me.datoucai.web.exception.CustomException;
+import me.datoucai.web.exp.ExceptionController;
 import me.datoucai.web.vo.RestResponse;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -14,10 +16,13 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import javax.servlet.http.HttpServletRequest;
 
 /**
+ * 指定包
+ *
  * @author cc
  * @date 2019/1/24
  */
-@RestControllerAdvice
+//@RestControllerAdvice(basePackages = "me.datoucai.web.exp")
+@RestControllerAdvice(basePackageClasses = {ExceptionController2.class, ExceptionController.class})
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = CustomException.class)
@@ -28,10 +33,10 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = RuntimeException.class)
     public RestResponse resoveRuntimeException(HttpServletRequest req, RuntimeException e) {
-        if(e instanceof JSONException){
-            if (!"application/json".equalsIgnoreCase(req.getHeader("Content-Type"))){
-               return  RestResponse.builder().code(406).message("请求参数类型content-type错误").detail(e.getMessage()).build();
-            }else {
+        if (e instanceof JSONException) {
+            if (!"application/json".equalsIgnoreCase(req.getHeader("Content-Type"))) {
+                return RestResponse.builder().code(406).message("请求参数类型content-type错误").detail(e.getMessage()).build();
+            } else {
                 return RestResponse.builder().code(406).message("请求参数内容错误").detail(e.getMessage()).build();
             }
         }
