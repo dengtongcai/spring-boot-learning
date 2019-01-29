@@ -27,6 +27,7 @@
         <module>01-spring-boot-external-config</module>
         <module>02-spring-boot-profiles</module>
         <module>03-spring-boot-web</module>
+        <module>04-spring-boot-data</module>
     </modules>
 
     <dependencies>
