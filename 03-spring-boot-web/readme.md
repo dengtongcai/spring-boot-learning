@@ -3,6 +3,7 @@
     - @RestControllerAdvice(basePackageClasses = {ExceptionController2.class, ExceptionController.class})
 - Mvc错误页面重定向
     - MvcErrorViewResolver implements ErrorViewResolver
+- 疑问调用me.datoucai.web.advices.GlobalExceptionHandler.handleExceptionInternal
 
 自定义content-type（消息转换器）
 - Base64HttpMessageConverter extends AbstractHttpMessageConverter<Serializable>
