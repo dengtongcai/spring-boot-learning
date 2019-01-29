@@ -5,3 +5,4 @@
 <version>2.2.4</version>
 ```
 
+JPA单数据源查询me.datoucai.data.jpa.UserRepository
