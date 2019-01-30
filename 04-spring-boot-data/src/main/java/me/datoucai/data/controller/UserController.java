@@ -22,7 +22,7 @@ import java.util.Optional;
 @RequestMapping("/data/user")
 public class UserController {
 
-    @NonNull
+    /*@NonNull
     private UserRepository userRepository;
 
     @GetMapping(value = "/id/{id}")
@@ -49,8 +49,7 @@ public class UserController {
 
     @PostMapping(value = "/add")
     public String addUser(@RequestBody @Valid User user) {
-//        User user = JSON.parseObject(data, User.class);
         @Valid User save = userRepository.save(user);
         return JSON.toJSONString(save);
-    }
+    }*/
 }
