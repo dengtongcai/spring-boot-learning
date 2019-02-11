@@ -5,12 +5,14 @@ import me.datoucai.data.jpa.master.MasterMultipartUserRepository;
 import me.datoucai.data.jpa.slave.SlaveMultipartUserRepository;
 import me.datoucai.data.vo.MultipartUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -58,13 +60,22 @@ public class MultipartController {
     }
 
     @PostMapping(value = "/add/extra")
-    public MultipartUser addExtra(@RequestBody @Valid MultipartUser user) {
+    public Object addExtra(@RequestBody @Validated MultipartUser user, BindingResult br) {
+        if (br.hasErrors()) {
+            List<ObjectError> allErrors = br.getAllErrors();
+            ArrayList<String> err = new ArrayList<>();
+            allErrors.forEach((error) -> {
+                err.add(error.getDefaultMessage());
+                System.out.println(error.getDefaultMessage());
+            });
+            return err;
+        }
         user.setDescription("extra");
         return extraMultipartUserRepository.save(user);
     }
 
     @GetMapping(value = "/all/user")
-    public Collection<MultipartUser> all(){
+    public Collection<MultipartUser> all() {
         List<MultipartUser> master = masterMultipartUserRepository.findAll();
         List<MultipartUser> slave = slaveMultipartUserRepository.findAll();
         List<MultipartUser> extra = extraMultipartUserRepository.findAll();
