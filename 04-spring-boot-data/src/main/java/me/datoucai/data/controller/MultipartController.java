@@ -1,14 +1,16 @@
 package me.datoucai.data.controller;
 
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import me.datoucai.data.jpa.extra.ExtraMultipartUserRepository;
 import me.datoucai.data.jpa.master.MasterMultipartUserRepository;
 import me.datoucai.data.jpa.slave.SlaveMultipartUserRepository;
 import me.datoucai.data.vo.MultipartUser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -16,16 +18,15 @@ import java.util.List;
  * @date 2019/1/30
  */
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/data")
 public class MultipartController {
 
-    @NonNull
-    private final MasterMultipartUserRepository masterMultipartUserRepository;
-    @NonNull
-    private final SlaveMultipartUserRepository slaveMultipartUserRepository;
-    @NonNull
-    private final ExtraMultipartUserRepository extraMultipartUserRepository;
+    @Autowired
+    private MasterMultipartUserRepository masterMultipartUserRepository;
+    @Autowired
+    private SlaveMultipartUserRepository slaveMultipartUserRepository;
+    @Autowired
+    private ExtraMultipartUserRepository extraMultipartUserRepository;
 
 
     @GetMapping("/user/master")
@@ -46,19 +47,33 @@ public class MultipartController {
 
     @PostMapping("/add/master")
     public MultipartUser addMaster(@RequestBody MultipartUser user) {
-        user.setDesc("master");
+        user.setDescription("master");
         return masterMultipartUserRepository.save(user);
     }
 
     @PostMapping("/add/slave")
     public MultipartUser addSlave(@RequestBody MultipartUser user) {
-        user.setDesc("slave");
+        user.setDescription("slave");
         return slaveMultipartUserRepository.save(user);
     }
 
     @PostMapping(value = "/add/extra")
     public MultipartUser addExtra(@RequestBody @Valid MultipartUser user) {
-        user.setDesc("extra");
+        user.setDescription("extra");
         return extraMultipartUserRepository.save(user);
+    }
+
+    @GetMapping(value = "/all/user")
+    public Collection<MultipartUser> all(){
+        List<MultipartUser> master = masterMultipartUserRepository.findAll();
+        List<MultipartUser> slave = slaveMultipartUserRepository.findAll();
+        List<MultipartUser> extra = extraMultipartUserRepository.findAll();
+
+        List<MultipartUser> all = new ArrayList<>();
+        all.addAll(master);
+        all.addAll(slave);
+        all.addAll(extra);
+
+        return all;
     }
 }

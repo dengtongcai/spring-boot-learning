@@ -22,5 +22,5 @@ public class MultipartUser {
     @NotNull
     private Integer age;
     private String location;
-    private String desc;
+    private String description;
 }

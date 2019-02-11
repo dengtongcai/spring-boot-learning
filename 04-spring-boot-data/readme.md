@@ -13,3 +13,4 @@ JPA多数据源
 .packages("me.datoucai.data.vo") 写错
 - org.springframework.beans.factory.BeanNotOfRequiredTypeException: Bean named 'extraTransactionManager' is expected to be of type 'org.springframework.transaction.PlatformTransactionManager' but was actually of type 'com.sun.proxy.$Proxy89
 @Bean(name = "extraTransactionManager")注解到其他对象了
+- MySQL关键字占用`desc`
