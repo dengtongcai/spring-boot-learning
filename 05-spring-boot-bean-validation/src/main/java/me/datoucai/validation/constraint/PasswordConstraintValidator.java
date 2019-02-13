@@ -18,10 +18,10 @@ public class PasswordConstraintValidator implements ConstraintValidator<Password
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
 
-        if (value.length() != 6 && value.length() != 8) {
-            return false;
+        if (value != null && (value.length() == 6 || value.length() == 8)) {
+            return true;
         }
-        return true;
+        return false;
     }
 
     @Override

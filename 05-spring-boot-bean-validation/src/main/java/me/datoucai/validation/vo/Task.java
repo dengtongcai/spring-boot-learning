@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import me.datoucai.validation.annotation.Idcard;
 import me.datoucai.validation.annotation.Password;
@@ -37,6 +38,7 @@ public class Task extends BaseTask implements Cloneable {
     @NotBlank(message = "idCard must not be blank")
     @Idcard(message = "idcard is illegal")
     @JSONField(name = "id_card")
+    @JsonProperty("id_card")
     String idCard;
     /**
      * 用户真实姓名
