@@ -1,6 +1,7 @@
-多配置文件
+## :fallen_leaf:02-spring-boot-profiles
+##### 多配置文件
 - spring.profiles.active=devp
-日志配置
+##### 日志配置
 - 日志级别
     - logging.level.root=info
 - 指定类日志级别

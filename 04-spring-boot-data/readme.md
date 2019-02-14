@@ -1,11 +1,13 @@
-生成Git信息，也可以作为存活检测接口
+## :whale2:04-spring-boot-data
+##### 生成Git信息，也可以作为存活检测接口
 ```java
 <groupId>pl.project13.maven</groupId>
 <artifactId>git-commit-id-plugin</artifactId>
 <version>2.2.4</version>
 ```
-
+##### JPA
 JPA单数据源查询me.datoucai.data.jpa.UserRepository
+
 JPA多数据源
 - @Primary
 - jdbc-url而不是url
