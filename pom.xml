@@ -29,6 +29,7 @@
         <module>03-spring-boot-web</module>
         <module>04-spring-boot-data</module>
         <module>05-spring-boot-bean-validation</module>
+        <module>06-spring-boot-sharding-sphere</module>
     </modules>
 
     <dependencies>
