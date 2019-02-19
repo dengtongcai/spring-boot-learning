@@ -1,5 +1,7 @@
 package me.datoucai.sharding.vo;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -25,6 +27,8 @@ public class Company {
 
     private String email;
 
+    @JSONField(name = "web_site")
+    @JsonProperty(value = "web_site")
     private String webSite;
 
     private String address;
